@@ -3,25 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using ScoreSystem;
 
-public class Game : MonoBehaviour
+public class Game
 {
     private Score _playerScore;
     [SerializeField] private int SCORE;
 
-    public void Constructor(Score score)
+    public void Constructor(Score score, int startPlayerScore)
     {
         _playerScore = score;
         _playerScore.PlayerScore = SCORE;
-    }
-
-    private void OnApplicationQuit()
-    {
-        _playerScore.PlayerScore = 0;
+        SCORE = startPlayerScore;
     }
 
     public void StopGame()
     {
+        _playerScore.PlayerScore = 0;
         Debug.Log("EXIT EMAE");
-        Application.Quit();
     }
+    
 }

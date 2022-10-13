@@ -6,20 +6,16 @@ using ScoreSystem;
 public class ClickObject : MonoBehaviour
 {
     private Score score;
+    [SerializeField] private int numberToPlus;
 
     public void Constructor(Score score)
     {
         this.score = score;
-        score.scoreChanged.AddListener(Decrement);
     }
 
     private void OnMouseDown()
     {
+        score.PlayerScore += numberToPlus;
         score.scoreChanged.Invoke();
-    }
-
-    private void Decrement()
-    {
-        score.PlayerScore--;
     }
 }
